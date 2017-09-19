@@ -70,6 +70,7 @@ class OGRInspectTest(TestCase):
             '# This is an auto-generated Django model module created by ogrinspect.',
             'from django.contrib.gis.db import models',
             '',
+            '',
             'class MyModel(models.Model):',
             '    float = models.FloatField()',
             '    int = models.{}()'.format('BigIntegerField' if GDAL_VERSION >= (2, 0) else 'FloatField'),
@@ -95,6 +96,7 @@ class OGRInspectTest(TestCase):
         expected = [
             '# This is an auto-generated Django model module created by ogrinspect.',
             'from django.contrib.gis.db import models',
+            '',
             '',
             'class City(models.Model):',
             '    name = models.CharField(max_length=80)',
@@ -125,6 +127,7 @@ class OGRInspectTest(TestCase):
         self.assertTrue(model_def.startswith(
             '# This is an auto-generated Django model module created by ogrinspect.\n'
             'from django.contrib.gis.db import models\n'
+            '\n'
             '\n'
             'class Measurement(models.Model):\n'
         ))
